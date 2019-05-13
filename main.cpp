@@ -1,25 +1,30 @@
-#include<stdio.h>
 #include<iostream>
-#include<gsl/gsl_sf_bessel.h>
-#include<math.h>
-#include<vector>
+#include "a.h"
 using namespace std;
+
+int fun1(int x, int y)
+{
+	return x + y;
+}
+
+int fun2(int x, int y)
+{
+	return x - y;
+}
+
+int fun3(int x, int y)
+{
+	return x * y;
+}
 
 int main()
 {
-	double x = 5.0;
-	double y = gsl_sf_bessel_J0(x);
-	printf("J0(%g)=%.18e\n", x, y);
-	vector<double> a;
-	for (int i = 0; i < 20; i++) {
-		a.push_back(sqrt(i));
-	}
-	for (int i = 0; i < 20; i++) {
-		cout << a[i] << ' ';
-		if (i > 0 && i % 5 == 0) {
-			cout << endl;
-		}
-	}
-	a.clear();
+	a xx(fun1);
+	xx.calc(5, 6);
+	cout << xx.show() << endl;
+	xx.change(fun2);
+	xx.calc(5, 6);
+	cout << xx.show() << endl;
+
 	return 0;
 }
