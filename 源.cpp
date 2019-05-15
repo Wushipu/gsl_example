@@ -3,6 +3,7 @@
 
 int main()
 {
+
 	int** a;
 	int i, j;
 	a = (int**)malloc(sizeof(int*) * 3);//为二维数组分配3行
